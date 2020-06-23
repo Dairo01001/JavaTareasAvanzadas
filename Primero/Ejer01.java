@@ -48,6 +48,7 @@ public class Ejer01 extends JFrame implements ActionListener {
         this.division = new JRadioButton("Divison");
         this.mostrar = new JButton("Mostrar");
         this.intentarDeNuevo = new JButton("Repetir");
+        this.calculadora = new Calculadora();
 
         this.a = new JTextField("0");
         this.b = new JTextField("0");
@@ -84,7 +85,8 @@ public class Ejer01 extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (this.bandera) {
-            this.calculadora = new Calculadora(Double.parseDouble(this.a.getText()), Double.parseDouble(this.b.getText()));
+            this.calculadora.setNum1(Double.parseDouble(this.a.getText()));
+            this.calculadora.setNum2(Double.parseDouble(this.b.getText()));
             this.bandera = false;
             this.a.setEditable(false);
             this.b.setEditable(false);
