@@ -9,21 +9,29 @@ import java.awt.event.*;
  */
 public class Ejer02 extends JFrame implements ItemListener {
 
-    private static final long serialVersionUID = 2L;
-
     private JComboBox<String> operaciones;
     private JTextField a;
     private JTextField b;
     private JLabel ans;
 
+    private Calculadora calculadora;
+    private boolean bandera = true;
+
     public Ejer02() {
+        this.initEjer02();
+        this.inicializarComponentes();
+    }
+
+    private void initEjer02() {
         this.setLayout(null);
-        inicializarComponentes();
+        this.setBounds(0, 0, 500, 500);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     private void inicializarComponentes() {
         String opera[] = {"", "Suma", "Resta", "Multiplicacion", "Division", "Reiniciar"};
-        this.operaciones = new JComboBox<String>();
+        this.operaciones = new JComboBox<>();
         this.operaciones.setBounds(100, 100, 100, 50);
         this.add(this.operaciones);
         for (String operacion : opera) {
@@ -44,32 +52,30 @@ public class Ejer02 extends JFrame implements ItemListener {
         this.add(this.ans);
     }
 
+    @Override
     public void itemStateChanged(ItemEvent e) {
-        double num1 = Double.parseDouble(this.a.getText());
-        double num2 = Double.parseDouble(this.b.getText());
-
-        this.a.setEditable(false);
-        this.b.setEditable(false);
+        if (this.bandera) {
+            this.calculadora = new Calculadora(Double.parseDouble(this.a.getText()), Double.parseDouble(this.b.getText()));
+            this.bandera = false;
+            this.a.setEditable(false);
+            this.b.setEditable(false);
+        }
 
         if (e.getSource().equals(this.operaciones)) {
             String op = (String) this.operaciones.getSelectedItem();
             this.setTitle(op);
             switch (op) {
                 case "Suma":
-                    this.ans.setText("Respuesta: " + (num1 + num2));
+                    this.ans.setText("Respuesta: " + this.calculadora.suma());
                     break;
                 case "Resta":
-                    this.ans.setText("Respuesta: " + (num1 - num2));
+                    this.ans.setText("Respuesta: " + this.calculadora.resta());
                     break;
                 case "Multiplicacion":
-                    this.ans.setText("Respuesta: " + (num1 * num2));
+                    this.ans.setText("Respuesta: " + this.calculadora.multiplicacion());
                     break;
                 case "Division":
-                    if (num1 == 0 || num2 == 0) {
-                        this.ans.setText("Respuesta: " + 0);
-                    } else {
-                        this.ans.setText("Respuesta: " + (num1 / num2));
-                    }
+                    this.ans.setText("Respuesta: " + this.calculadora.division());
                     break;
                 case "Reiniciar":
                     this.a.setEditable(true);
@@ -77,16 +83,9 @@ public class Ejer02 extends JFrame implements ItemListener {
                     this.a.setText("0");
                     this.b.setText("0");
                     this.ans.setText("Respuesta: " + 0);
+                    this.bandera = true;
                     break;
             }
         }
-    }
-
-    public static void main(String[] ar) {
-        Ejer01 operaciones = new Ejer01();
-        operaciones.setBounds(0, 0, 500, 500);
-        operaciones.setLocationRelativeTo(null);
-        operaciones.setVisible(true);
-        operaciones.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

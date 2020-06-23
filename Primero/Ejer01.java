@@ -21,7 +21,8 @@ public class Ejer01 extends JFrame implements ActionListener {
     private JTextField b;
     private JLabel ans;
 
-    double respuesta = 0D;
+    private Calculadora calculadora;
+    private boolean bandera = true;
 
     public Ejer01() {
         super();
@@ -36,7 +37,6 @@ public class Ejer01 extends JFrame implements ActionListener {
         this.setLayout(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
     }
 
     private void inicializarComponentes() {
@@ -83,29 +83,23 @@ public class Ejer01 extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        double num1 = Double.parseDouble(this.a.getText());
-        double num2 = Double.parseDouble(this.b.getText());
-
-        double resp = 0;
-        this.a.setEditable(false);
-        this.b.setEditable(false);
-
-        if (this.suma.isSelected()) {
-            resp = num1 + num2;
-        } else if (this.resta.isSelected()) {
-            resp = num1 - num2;
-        } else if (this.multiplicacion.isSelected()) {
-            resp = num1 * num2;
-        } else if (this.division.isSelected()) {
-            if (num1 == 0 || num2 == 0) {
-                resp = 0;
-            } else {
-                resp = num1 / num2;
-            }
+        if (this.bandera) {
+            this.calculadora = new Calculadora(Double.parseDouble(this.a.getText()), Double.parseDouble(this.b.getText()));
+            this.bandera = false;
+            this.a.setEditable(false);
+            this.b.setEditable(false);
         }
 
         if (e.getSource().equals(this.mostrar)) {
-            mostrar(resp);
+            if (this.suma.isSelected()) {
+                mostrar(this.calculadora.suma());
+            } else if (this.resta.isSelected()) {
+                mostrar(this.calculadora.resta());
+            } else if (this.multiplicacion.isSelected()) {
+                mostrar(this.calculadora.multiplicacion());
+            } else if (this.division.isSelected()) {
+                mostrar(this.calculadora.division());
+            }
         }
 
         if (e.getSource().equals(this.intentarDeNuevo)) {
@@ -113,16 +107,12 @@ public class Ejer01 extends JFrame implements ActionListener {
             this.b.setEditable(true);
             this.a.setText("0");
             this.b.setText("0");
-            this.respuesta = 0;
+            this.bandera = true;
             mostrar(0);
         }
     }
 
     private void mostrar(double ans) {
         this.ans.setText("Respuesta: " + ans);
-    }
-    
-    public static void main(String[] args) {
-        Ejer01 ejer01 = new Ejer01();
     }
 }
