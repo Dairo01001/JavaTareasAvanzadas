@@ -99,7 +99,7 @@ public class Ejer02 extends JFrame implements ChangeListener, ActionListener {
         limpiar.setBounds(265, 400, 180, 50);
         limpiar.addActionListener(this);
         this.add(limpiar);
-        
+
         this.setVisible(true);
     }
 
@@ -128,7 +128,12 @@ public class Ejer02 extends JFrame implements ChangeListener, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        this.dispose();
-        new Ejer02();
+        jRadioButtons.clearSelection();
+        r.setValue(0);
+        g.setValue(0);
+        b.setValue(0);
+        primerJPanel.setBackground(Color.BLACK);
+        segundoJPanel.setBackground(Color.BLACK);
+        tercerJPanel.setBackground(Color.BLACK);
     }
 }
