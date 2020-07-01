@@ -110,6 +110,7 @@ public class Ejer01 extends JFrame implements ActionListener {
             this.a.setText("0");
             this.b.setText("0");
             this.bandera = true;
+            this.operaciones.clearSelection();
             mostrar(0);
         }
     }
