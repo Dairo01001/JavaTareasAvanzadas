@@ -3,6 +3,8 @@ package JavaTareasAvanzadas.Tercero;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,7 +14,7 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class Ejer02 extends JFrame implements ChangeListener, ActionListener {
+public class Ejer02 extends JFrame implements ChangeListener, ActionListener, ItemListener {
 
     private JSlider r, g, b;
     private ButtonGroup jRadioButtons;
@@ -67,16 +69,19 @@ public class Ejer02 extends JFrame implements ChangeListener, ActionListener {
 
         primerJRadioButton = new JRadioButton("1° JPanel");
         primerJRadioButton.setBounds(500, 60, 150, 50);
+        primerJRadioButton.addItemListener(this);
         jRadioButtons.add(primerJRadioButton);
         this.add(primerJRadioButton);
 
         segundoJRadioButton = new JRadioButton("2° JPanel");
         segundoJRadioButton.setBounds(500, 120, 150, 50);
+        segundoJRadioButton.addItemListener(this);
         jRadioButtons.add(segundoJRadioButton);
         this.add(segundoJRadioButton);
 
         tercerJRadioButton = new JRadioButton("3° JPanel");
         tercerJRadioButton.setBounds(500, 180, 150, 50);
+        tercerJRadioButton.addItemListener(this);
         jRadioButtons.add(tercerJRadioButton);
         this.add(tercerJRadioButton);
 
@@ -135,5 +140,16 @@ public class Ejer02 extends JFrame implements ChangeListener, ActionListener {
         primerJPanel.setBackground(Color.BLACK);
         segundoJPanel.setBackground(Color.BLACK);
         tercerJPanel.setBackground(Color.BLACK);
+    }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+        if (e.getSource().equals(primerJRadioButton)) {
+            primerJPanel.setBackground(new Color(red, green, blue));
+        } else if (e.getSource().equals(segundoJRadioButton)) {
+            segundoJPanel.setBackground(new Color(red, green, blue));
+        } else {
+            tercerJPanel.setBackground(new Color(red, green, blue));
+        }
     }
 }
