@@ -24,6 +24,7 @@ public class Ejer02 extends JFrame implements ItemListener {
 
     private void initEjer02() {
         this.setLayout(null);
+        this.setTitle("Operaciones");
         this.setBounds(0, 0, 500, 500);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,12 +32,9 @@ public class Ejer02 extends JFrame implements ItemListener {
 
     private void inicializarComponentes() {
         String opera[] = {"", "Suma", "Resta", "Multiplicacion", "Division", "Reiniciar"};
-        this.operaciones = new JComboBox<>();
+        this.operaciones = new JComboBox<>(opera);
         this.operaciones.setBounds(100, 100, 100, 50);
         this.add(this.operaciones);
-        for (String operacion : opera) {
-            this.operaciones.addItem(operacion);
-        }
         operaciones.addItemListener(this);
         this.calculadora = new Calculadora();
 
@@ -64,22 +62,21 @@ public class Ejer02 extends JFrame implements ItemListener {
         }
 
         if (e.getSource().equals(this.operaciones)) {
-            String op = (String) this.operaciones.getSelectedItem();
-            this.setTitle(op);
+            int op = this.operaciones.getSelectedIndex();
             switch (op) {
-                case "Suma":
+                case 1:
                     this.ans.setText("Respuesta: " + this.calculadora.suma());
                     break;
-                case "Resta":
+                case 2:
                     this.ans.setText("Respuesta: " + this.calculadora.resta());
                     break;
-                case "Multiplicacion":
+                case 3:
                     this.ans.setText("Respuesta: " + this.calculadora.multiplicacion());
                     break;
-                case "Division":
+                case 4:
                     this.ans.setText("Respuesta: " + this.calculadora.division());
                     break;
-                case "Reiniciar":
+                case 5:
                     this.a.setEditable(true);
                     this.b.setEditable(true);
                     this.a.setText("0");
