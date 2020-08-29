@@ -56,6 +56,7 @@ public class Ejer01 extends JFrame {
         jSl.setMinorTickSpacing(1);
         jSl.setPaintTicks(true);
         jSl.setPaintLabels(true);
+        
         return jSl;
     }
 

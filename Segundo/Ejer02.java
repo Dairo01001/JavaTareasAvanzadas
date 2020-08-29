@@ -1,4 +1,4 @@
-package Segundo;
+package JavaTareasAvanzadas.Segundo;
 
 import java.awt.Font;
 import java.awt.Image;
