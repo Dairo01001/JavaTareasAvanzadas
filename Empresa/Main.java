@@ -7,6 +7,16 @@ import java.util.Scanner;
 /**
  * @author user
  */
+
+/*
+Realice una implementación en donde represente un equipo de fútbol. Para esto creará una clase denominada Jugador, 
+los cual tendrán como atributos (privados), nombre, número y posición. Luego realice una clase llamada equipo, 
+en esta tendrá como atributos, el nombre del equipo y un arreglo de 11 posiciones de objetos (jugadores) (privados). 
+Por último, realice en la clase Main, cree dos equipos y agregue jugadores al equipo, adicionalmente, 
+cree un método que le permita saber si el equipo esta complejo, en caso que el equipo de fútbol le haga falta jugadores, 
+el método debe informar cuántos restan para completar el equipo.
+*/
+        
 public class Main {
 
     public static void main(String[] args) {
