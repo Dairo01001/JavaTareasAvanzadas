@@ -38,6 +38,15 @@ public class Piso {
     public int getNumeroPiso() {
         return numeroPiso;
     }
+    
+    public Habitacion getHabitacion(int numeroHabitacion){
+        for (int i = 0; i < this.cantidadHabitaciones; i++) {
+            if (numeroHabitacion == this.habitaciones[i].getNumero()) {
+                return this.habitaciones[i];
+            }
+        }
+        return null;
+    }
 
     public void setNumeroPiso(int numeroPiso) {
         this.numeroPiso = numeroPiso;
@@ -50,10 +59,10 @@ public class Piso {
             System.out.println("Este piso no tiene habitaciones disponibles");
         }
     }
-
+   
     @Override
     public String toString() {
-        return "Piso [" + " NumeroPiso=" + numeroPiso + ", Habitaciones: " + Arrays.toString(habitaciones) + ']';
+        return "\nPiso [" + " NumeroPiso=" + numeroPiso + ", Habitaciones: " + Arrays.toString(habitaciones) + ']';
     }
 
 }

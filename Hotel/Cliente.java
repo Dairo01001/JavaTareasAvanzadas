@@ -51,6 +51,6 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Persona [" + "Id: " + id + ", Nombre: " + nombre + ", Procedencia: " + procedencia + ", Edad: " + edad + ']';
+        return "\t\nPersona [" + "Id: " + id + ", Nombre: " + nombre + ", Procedencia: " + procedencia + ", Edad: " + edad + ']';
     }
 }

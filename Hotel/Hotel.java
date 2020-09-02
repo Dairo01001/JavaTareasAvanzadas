@@ -39,6 +39,6 @@ public class Hotel {
 
     @Override
     public String toString() {
-        return "Hotel [" + "Pisos: " + Arrays.toString(pisos) + ", Numero Pisos: " + numeroPisos + ']';
+        return "Hotel [" + "\nPisos: " + Arrays.toString(pisos) + "\nNumero Pisos: " + numeroPisos + ']';
     }
 }
