@@ -1,5 +1,6 @@
 package JavaTareasAvanzadas.Hotel;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -32,7 +33,7 @@ public class Hotel {
             System.out.println("Pisos no disponibles");
         }
     }
-
+    
     public int getNumeroPisos() {
         return numeroPisos;
     }

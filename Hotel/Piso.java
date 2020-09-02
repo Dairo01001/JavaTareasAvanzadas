@@ -1,5 +1,6 @@
 package JavaTareasAvanzadas.Hotel;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -38,8 +39,8 @@ public class Piso {
     public int getNumeroPiso() {
         return numeroPiso;
     }
-    
-    public Habitacion getHabitacion(int numeroHabitacion){
+
+    public Habitacion getHabitacion(int numeroHabitacion) {
         for (int i = 0; i < this.cantidadHabitaciones; i++) {
             if (numeroHabitacion == this.habitaciones[i].getNumero()) {
                 return this.habitaciones[i];
@@ -59,7 +60,27 @@ public class Piso {
             System.out.println("Este piso no tiene habitaciones disponibles");
         }
     }
-   
+
+    public ArrayList<Habitacion> getHabitacionesOcupadas() {
+        ArrayList<Habitacion> auxH = new ArrayList();
+        for (Habitacion habitacione : this.habitaciones) {
+            if (!habitacione.isLibre()) {
+                auxH.add(habitacione);
+            }
+        }
+        Habitacion auxC;
+        for (int i = 1; i < auxH.size(); i++) {
+            auxC = auxH.get(i);
+            int j = i - 1;
+            while ((j >= 0) && (auxC.getHuesped().getApellido().compareTo(auxH.get(i).getHuesped().getApellido()) < 0)) {
+                auxH.set(j + 1, auxH.get(j));
+                j--;
+            }
+            auxH.set(j + 1, auxC);
+        }
+        return auxH;
+    }
+
     @Override
     public String toString() {
         return "\nPiso [" + " NumeroPiso=" + numeroPiso + ", Habitaciones: " + Arrays.toString(habitaciones) + ']';

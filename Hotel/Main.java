@@ -1,5 +1,6 @@
 package JavaTareasAvanzadas.Hotel;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -49,18 +50,20 @@ public class Main {
                     System.out.print("NOMBRE: ");
                     sc.skip("\n");
                     String nombre = sc.nextLine();
+                    System.out.print("APELLIDO: ");
+                    String apellido = sc.nextLine();
                     System.out.print("PROCENDENCIA: ");
                     String procedencia = sc.nextLine();
-                    auxH.setHuesped(new Cliente(id, nombre, procedencia, edad));
+                    auxH.setHuesped(new Cliente(id, nombre, apellido, procedencia, edad));
                 }
                 System.out.println(hotel.getPisos()[piso]);
+                System.out.println("HABITACIONES OCUPADAS: ");
+                System.out.println(Arrays.toString(hotel.getPisos()[piso].getHabitacionesOcupadas().toArray()));
             }
 
         }
     }
 
-    
-    
     private static void mostrarHabitacionesDisponibles(Piso piso) {
         System.out.println("<-- Habitaciones Disponibles -->");
         for (int j = 0; j < piso.getCantidadHabitaciones(); j++) {

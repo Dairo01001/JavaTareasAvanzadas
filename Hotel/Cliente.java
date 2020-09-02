@@ -7,14 +7,24 @@ public class Cliente {
 
     private int id;
     private String nombre;
+    private String apellido;
     private String procedencia;
     private int edad;
 
-    public Cliente(int id, String nombre, String procedencia, int edad) {
+    public Cliente(int id, String nombre, String apellido, String procedencia, int edad) {
         this.id = id;
         this.nombre = nombre;
+        this.apellido = apellido;
         this.procedencia = procedencia;
         this.edad = edad;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public int getId() {
