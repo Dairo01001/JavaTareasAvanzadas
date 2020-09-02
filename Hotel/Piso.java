@@ -8,11 +8,12 @@ import java.util.Arrays;
  */
 public class Piso {
 
-    private int numeroPiso;
-    private Habitacion[] habitaciones;
-    private int cantidadHabitaciones;
-    private int aux;
+    public int numeroPiso;
+    public Habitacion[] habitaciones;
+    public int cantidadHabitaciones;
+    public int aux;
 
+    // Constructor con parametros
     public Piso(int cantidadHabitaciones, int numeroPiso) {
         this.cantidadHabitaciones = cantidadHabitaciones;
         this.numeroPiso = numeroPiso;
@@ -40,6 +41,7 @@ public class Piso {
         return numeroPiso;
     }
 
+    // Busca una habitacion y la retorna por el numero de habitacion
     public Habitacion getHabitacion(int numeroHabitacion) {
         for (int i = 0; i < this.cantidadHabitaciones; i++) {
             if (numeroHabitacion == this.habitaciones[i].getNumero()) {
@@ -53,6 +55,7 @@ public class Piso {
         this.numeroPiso = numeroPiso;
     }
 
+    // Llena las habiaticones por cada habitacion
     public void setHabitacion(Habitacion habitacion) {
         if (this.aux < this.cantidadHabitaciones) {
             this.habitaciones[this.aux++] = habitacion;
@@ -61,13 +64,17 @@ public class Piso {
         }
     }
 
+    // retorna un arraylist de la habitaciones ocupadas ordenadas por apellido
     public ArrayList<Habitacion> getHabitacionesOcupadas() {
         ArrayList<Habitacion> auxH = new ArrayList();
+        // si la habiatcion esta ocupada la agrega al array list
         for (Habitacion habitacione : this.habitaciones) {
             if (!habitacione.isLibre()) {
                 auxH.add(habitacione);
             }
         }
+        
+        // metodo de ordenamiento
         Habitacion auxC;
         for (int i = 1; i < auxH.size(); i++) {
             auxC = auxH.get(i);

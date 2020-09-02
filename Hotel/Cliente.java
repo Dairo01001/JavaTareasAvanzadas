@@ -5,11 +5,11 @@ package JavaTareasAvanzadas.Hotel;
  */
 public class Cliente {
 
-    private int id;
-    private String nombre;
-    private String apellido;
-    private String procedencia;
-    private int edad;
+    public int id;
+    public String nombre;
+    public String apellido;
+    public String procedencia;
+    public int edad;
 
     public Cliente(int id, String nombre, String apellido, String procedencia, int edad) {
         this.id = id;

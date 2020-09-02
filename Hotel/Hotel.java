@@ -8,9 +8,9 @@ import java.util.Arrays;
  */
 public class Hotel {
 
-    private Piso[] pisos;
-    private final int numeroPisos;
-    private int aux;
+    public Piso[] pisos;
+    public final int numeroPisos;
+    public int aux;
 
     public Hotel(int numeroPisos) {
         this.numeroPisos = numeroPisos;
@@ -18,14 +18,17 @@ public class Hotel {
         this.aux = 0;
     }
 
+    // Retorna el vector donde estan los Pisos
     public Piso[] getPisos() {
         return pisos;
     }
 
+    // Para cambiar los Pisos pero se nevia el vector completo
     public void setPisos(Piso[] pisos) {
         this.pisos = pisos;
     }
 
+    // Para llenar los pisos del Hotel pero enviando piso por piso
     public void setPiso(Piso piso) {
         if (this.aux < this.numeroPisos) {
             this.pisos[this.aux++] = piso;
@@ -34,6 +37,7 @@ public class Hotel {
         }
     }
     
+    // retorna el numero de pisos del hotel
     public int getNumeroPisos() {
         return numeroPisos;
     }

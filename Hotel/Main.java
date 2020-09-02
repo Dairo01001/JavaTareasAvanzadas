@@ -13,12 +13,13 @@ public class Main {
         System.out.println(hotel);
         System.out.println("Registro de Pisos: ");
         int aux = 0;
-        for (int i = 0; i < hotel.getNumeroPisos(); i++) {
+        // cantidad de habitaciones por piso
+        for (int i = 0; i < hotel.numeroPisos; i++) {
             System.out.print("Digita la cantidad de habitaciones para el piso #" + i + ": ");
             int cantidadHabitaciones = sc.nextInt();
             hotel.setPiso(new Piso(cantidadHabitaciones, i));
             for (int j = 0; j < cantidadHabitaciones; j++) {
-                hotel.getPisos()[i].setHabitacion(new Habitacion(aux++));
+                hotel.pisos[i].setHabitacion(new Habitacion(aux++));
             }
         }
         System.out.println(hotel);
@@ -29,16 +30,16 @@ public class Main {
             if (reserva == 1) {
                 System.out.println(hotel);
                 System.out.println("<-- LISTA PISOS -->");
-                for (int i = 0; i < hotel.getNumeroPisos(); i++) {
-                    System.out.println(hotel.getPisos()[i]);
-                    mostrarHabitacionesDisponibles(hotel.getPisos()[i]);
+                for (int i = 0; i < hotel.numeroPisos; i++) {
+                    System.out.println(hotel.pisos[i]);
+                    mostrarHabitacionesDisponibles(hotel.pisos[i]);
                 }
                 System.out.print("QUE PISO DESEA? ");
                 int piso = sc.nextInt();
-                mostrarHabitacionesDisponibles(hotel.getPisos()[piso]);
+                mostrarHabitacionesDisponibles(hotel.pisos[piso]);
                 System.out.print("QUE HABITACION DESEA? ");
                 int habitacion = sc.nextInt();
-                Habitacion auxH = hotel.getPisos()[piso].getHabitacion(habitacion);
+                Habitacion auxH = hotel.pisos[piso].getHabitacion(habitacion);
                 if (auxH == null) {
                     System.out.println("Numero de habitacion herrado");
                 } else {
@@ -76,6 +77,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("<----- HOTEL ----->");
+        // cantidad de pisos del hotel
         System.out.print("Digita la cantidad de pisos: ");
         int cantidadPisos = sc.nextInt();
         Hotel h = new Hotel(cantidadPisos);

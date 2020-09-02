@@ -5,10 +5,10 @@ package JavaTareasAvanzadas.Hotel;
  */
 public class Habitacion {
 
-    private int numero;
-    private Cliente huesped;
-    private boolean reserva;
-    private boolean ocupada;
+    public int numero;
+    public Cliente huesped;
+    public boolean reserva;
+    public boolean ocupada;
 
     public Habitacion(int numero) {
         this.numero = numero;
