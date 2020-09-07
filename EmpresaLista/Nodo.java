@@ -44,5 +44,4 @@ public class Nodo {
     public String toString() {
         return "Nodo [" + "Dato: " + dato + ", Siguiente: " + siguiente + ']';
     }
-
 }
